@@ -1,10 +1,9 @@
 to test:
 
-in src/pywebsocket-0.4.9.2/src/mod_pywebsocket, run:
-python standalone.py -p 8001 -w ../example/
+in another shell, run:
+python standalone.py -p 8001
 
 then here, run:
-
 google-chrome test_pws.html
 
 text you send should be echoed
