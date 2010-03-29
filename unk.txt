@@ -7,3 +7,7 @@ then here, run:
 google-chrome test_pws.html
 
 text you send should be echoed
+
+
+if fails, try to diagnose:
+py echo_client.py -p 8001
