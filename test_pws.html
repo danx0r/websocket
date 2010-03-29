@@ -1,0 +1,38 @@
+<html><body>
+
+<script>
+function sendMessage() {
+        var msg = document.getElementById('message').value;
+        if ("WebSocket" in window) {
+                var ws = new WebSocket("ws://localhost:8001/echo");
+                ws.onopen = function() {
+                        ws.send(msg); 
+                };
+                ws.onmessage = function (evt) { 
+                        var received_msg = evt.data; 
+                        showResponse(received_msg);
+                };
+                ws.onclose = function() { alert('socket closed'); };
+        } else {
+                alert('no websockets');
+        }
+}
+ 
+function showResponse(msg) {
+        document.getElementById('response').innerHTML = document.getElementById('response').innerHTML + msg + '</br>'
+}
+ 
+function clearResponse() {
+        document.getElementById('message').value = '';
+        document.getElementById('response').innerHTML = '';
+}
+ 
+</script>
+<input type="text" id="message" name="message" />
+<input type="button" value="Send" onclick="sendMessage()" />
+<hr />
+<input type="button" value="Clear" onclick="clearResponse()" /><br />
+<span id="response">
+</span>
+
+</body></html>
