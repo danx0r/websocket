@@ -211,6 +211,7 @@ class WebSocketRequestHandler(CGIHTTPServer.CGIHTTPRequestHandler):
     """CGIHTTPRequestHandler specialized for Web Socket."""
 
     def setup(self):
+        print >> sys.stderr, "setup"
         """Override SocketServer.StreamRequestHandler.setup."""
 
         self.connection = self.request
@@ -220,6 +221,7 @@ class WebSocketRequestHandler(CGIHTTPServer.CGIHTTPRequestHandler):
         self.wfile = socket._fileobject(self.request, 'wb', self.wbufsize)
 
     def __init__(self, *args, **keywords):
+        print >> sys.stderr, "__init__"
         self._request = _StandaloneRequest(
                 self, WebSocketRequestHandler.options.use_tls)
         self._dispatcher = WebSocketRequestHandler.options.dispatcher
@@ -237,6 +239,7 @@ class WebSocketRequestHandler(CGIHTTPServer.CGIHTTPRequestHandler):
                 logging.warning('mod_pywebsocket: %s' % warning)
 
     def parse_request(self):
+        print >> sys.stderr, "request"
         """Override BaseHTTPServer.BaseHTTPRequestHandler.parse_request.
 
         Return True to continue processing for HTTP(S), False otherwise.
@@ -333,6 +336,7 @@ def _alias_handlers(dispatcher, websock_handlers_map_file):
 
 
 def _main():
+    print >> sys.stderr, "main"
     parser = optparse.OptionParser()
     parser.add_option('-H', '--server-host', '--server_host',
                       dest='server_host',

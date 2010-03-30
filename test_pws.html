@@ -4,7 +4,7 @@
 function sendMessage() {
         var msg = document.getElementById('message').value;
         if ("WebSocket" in window) {
-                var ws = new WebSocket("ws://localhost:8001/echo");
+                var ws = new WebSocket("ws://10.10.8.9:8080/wstest");
                 ws.onopen = function() {
                         ws.send(msg); 
                 };
