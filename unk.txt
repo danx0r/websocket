@@ -1,7 +1,7 @@
 to test:
 
-in another shell, run:
-python standalone.py -p 8001
+in another shell, in mod_pywebsocket, run:
+python standalone.py -p 8080 -w ../
 
 then here, run:
 google-chrome test_pws.html
@@ -10,4 +10,4 @@ text you send should be echoed
 
 
 if fails, try to diagnose:
-py echo_client.py -p 8001
+py echo_client.py -p 8080
