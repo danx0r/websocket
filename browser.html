@@ -11,6 +11,7 @@
 
 socket.onmessage = function(event) {
   console.log(`[message] Data received from server: ${event.data}`);
+  document.getElementById("message").innerHTML = event.data;
 };
 
 socket.onclose = function(event) {
@@ -29,7 +30,8 @@ socket.onerror = function(error) {
 </script>
 </head>
 <body>
-hello
+<div id="message">
+</div>
 </body>
 </html>
 
