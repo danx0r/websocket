@@ -1,10 +1,13 @@
 import asyncio
 import websockets
 
+state = [0]
+
 async def response(websocket, path):
 	message = await websocket.recv()
-	print(f"We got the message from the client: {message}")
-	await websocket.send(f"I can confirm I got your message: {message}")
+	state[0] += 1
+	print(f"state: {state[0]} Message from client: {message}")
+	await websocket.send(f"state: {state[0]} Confirming message: {message}")
 
 host, port = "localhost", 1234
 start_server = websockets.serve(response, host, port)
