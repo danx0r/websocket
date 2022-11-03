@@ -10,7 +10,7 @@ socket.onmessage = function (event) {
 };
 socket.onclose = function (event) {
     if (event.wasClean) {
-        console.log("[close] Connection closed cleanly, code=".concat(event.code, " reason=").concat(event.reason));
+        console.log("[close] Connection closed cleanly, code=".concat(event.code as unknown as string, " reason=").concat(event.reason));
     }
     else {
         // e.g. server process killed or network down
@@ -19,5 +19,5 @@ socket.onclose = function (event) {
     }
 };
 socket.onerror = function (error) {
-    console.log("[error] ".concat(error.message));
+    console.log("[error] ".concat(error.currentTarget as unknown as string));
 };
