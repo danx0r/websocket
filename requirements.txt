@@ -1,0 +1,5 @@
+#note: this is a different lib than websocket-client
+websockets
+
+#note: DO NO install 'websocket' -- install 'websocket-client' import as websocket
+websocket-client
